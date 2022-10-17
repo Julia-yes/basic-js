@@ -1,5 +1,3 @@
-
-const mlog = require('mocha-logger');
 const { NotImplementedError } = require('../extensions/index.js');
 
 /**
@@ -16,7 +14,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
  class DepthCalculator {
   
-  calculateDepth(arr) {{   
+  calculateDepth(arr) {
    let result = [];
    let num = 0;
     function isArr(prop) {
@@ -36,7 +34,7 @@ const { NotImplementedError } = require('../extensions/index.js');
   
 isArr(arr);
 return Math.max(...result)
-}}
+}
 }
 
 module.exports = {

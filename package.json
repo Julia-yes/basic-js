@@ -33,6 +33,7 @@
     "sinon": "14.0.0"
   },
   "dependencies": {
+    "debug": "^4.3.4",
     "mocha-logger": "^1.0.8"
   }
 }
