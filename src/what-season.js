@@ -11,18 +11,24 @@ const { NotImplementedError } = require('../extensions/index.js');
  * getSeason(new Date(2020, 02, 31)) => 'spring'
  * 
  */
+ class myErrorSeason extends Error {
+  constructor(message) {
+    super(message); 
+    this.name = "myErrorSeason"; 
+  }
+}
  
  function getSeason(date) {
+  if (typeof(date) === "undefined" || date === null) {
+    return 'Unable to determine the time of year!';
+  }
   if (isNaN(Date.parse(date))) {
-    throw new Error("Invalid date!");
+    throw new myErrorSeason('Invalid date!');
   }
   if (typeof(date) === "string") {
-    throw new Error("Invalid date!");
-  }
+    throw new myErrorSeason('Invalid date!');
+  }  
   
-  if (typeof(date) === "undefined" || date === null) {
-    throw new Error('Unable to determine the time of year!');
-  }
   if (date instanceof Date) {
     
   let season = date.getMonth();
@@ -41,7 +47,7 @@ const { NotImplementedError } = require('../extensions/index.js');
   }
 }
 else {
-  throw new Error("Invalid date!");
+  throw new myErrorSeason('Invalid date!');
 }
   
 }

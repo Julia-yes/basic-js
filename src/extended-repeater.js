@@ -20,6 +20,7 @@ function repeater(str, options) {
   let resultStr = [];
   let add = [];
   let addStr;
+  
     let i = 0
     while (i < options.additionRepeatTimes) {
       add.push(String(options.addition));
@@ -29,9 +30,17 @@ function repeater(str, options) {
     addStr = add.join(options.additionSeparator)
   }
   else {
-    addStr = add.join("|")
-  }
-
+    if (add.length > 1) {
+      addStr = add.join("|")
+    }
+    else {
+      if (options.addition !== undefined) {
+        addStr = (String(options.addition));
+      }
+    
+    }
+    
+  }  
   resultStr.push(String(str));
   resultStr.push(addStr);
   let j = 0;
@@ -50,9 +59,7 @@ function repeater(str, options) {
   }
   else {
     return resultStr[0] + options.addition
-  }
-  
-  
+  } 
 }
 
 module.exports = {
