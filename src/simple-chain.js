@@ -14,8 +14,13 @@ const { NotImplementedError } = require('../extensions/index.js');
      return this
    },
    removeLink(position) {
+    if (position > 0 && position < this.result.length) {
      this.result.splice(position-1, 1);
      return this
+    }
+    else {
+      throw new Error('You can\'t remove incorrect link!')
+    }
    },
    reverseChain() {
      this.result.reverse();
@@ -24,8 +29,9 @@ const { NotImplementedError } = require('../extensions/index.js');
    finishChain() {
     let arr = [];
     for (item of this.result) {
-      arr.push(`(${item})`)
+      arr.push(`( ${item} )`)
     }
+    console.log("!!")
     return arr.join("~~")
    }
  };
