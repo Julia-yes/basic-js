@@ -7,19 +7,25 @@ const { NotImplementedError } = require('../extensions/index.js');
  const chainMaker = {
   result: [],
    getLength() {
+    
      return this.result.length
    },
    addLink(value) {
+    console.log("!!!!")
      this.result.push(value);
      return this
    },
    removeLink(position) {
+    console.log(this.result.length);
+    console.log(position);
     if (position > 0 && position < this.result.length) {
      this.result.splice(position-1, 1);
      return this
     }
     else {
-      throw new Error('You can\'t remove incorrect link!')
+      this.result.length = 0;
+      return 'You can\'t remove incorrect link!';
+      
     }
    },
    reverseChain() {
@@ -39,3 +45,5 @@ const { NotImplementedError } = require('../extensions/index.js');
 module.exports = {
   chainMaker
 };
+chainMaker.addLink(1).addLink(2).addLink(3).removeLink(-2),
+console.log(chainMaker.addLink(1).addLink(2).addLink(3).removeLink(4));
